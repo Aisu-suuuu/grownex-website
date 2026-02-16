@@ -7,6 +7,7 @@ import OurServices from "@/components/OurServices";
 import Showcase from "@/components/Showcase";
 import ClientExpect from "@/components/ClientExpect";
 import FAQ from "@/components/FAQ";
+import GetInTouch from "@/components/GetInTouch";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -21,6 +22,7 @@ export default function Home() {
       <Showcase />
       <ClientExpect />
       <FAQ />
+      <GetInTouch />
       <Footer />
     </>
   );
