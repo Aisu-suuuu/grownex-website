@@ -37,30 +37,30 @@ export default function Footer() {
   ];
 
   return (
-    <section id="contact" className="px-4 md:px-6 pb-4 md:pb-6">
-      <footer
-        ref={ref}
-        className="bg-[#141010] text-white rounded-3xl overflow-hidden"
-      >
+    <footer
+      id="contact"
+      ref={ref}
+      className="bg-[#141010] text-white rounded-t-3xl overflow-hidden shadow-[0_-20px_60px_rgba(0,0,0,0.4)]"
+    >
         <div className="max-w-[1280px] mx-auto px-8 lg:px-16">
           {/* Main Content */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="pt-16 md:pt-20 pb-12 md:pb-16 flex flex-col md:flex-row justify-between gap-12"
+            className="pt-16 md:pt-18 pb-10 md:pb-14 flex flex-col md:flex-row justify-between gap-10"
           >
             {/* Left — Brand Logo + Tagline */}
             <div className="flex-1">
               <Image
                 src="/images/grownex-logo-white.svg"
                 alt="Grownex"
-                width={500}
-                height={80}
-                className="w-[280px] md:w-[400px] lg:w-[500px] h-auto"
+                width={700}
+                height={130}
+                className="w-[350px] md:w-[520px] lg:w-[700px] h-auto"
                 priority
               />
-              <p className="mt-5 text-[16px] text-white/70 max-w-[380px] leading-[1.6]">
+              <p className="mt-3 text-[15px] text-white/70 max-w-[380px] leading-[1.6]">
                 The next big thing starts here —{" "}
                 drop us a line and let&apos;s get creating!
               </p>
@@ -99,7 +99,7 @@ export default function Footer() {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="border-t border-white/[0.08] py-10"
+            className="border-t border-white/[0.08] py-8"
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {contactInfo.map((info) => (
@@ -124,7 +124,6 @@ export default function Footer() {
             </p>
           </div>
         </div>
-      </footer>
-    </section>
+    </footer>
   );
 }

@@ -11,7 +11,7 @@ export default function GetInTouch() {
   return (
     <section
       ref={ref}
-      className="bg-accent text-white py-20 md:py-28 px-6 md:px-12 lg:px-20"
+      className="bg-accent text-white min-h-screen flex items-center py-20 md:py-28 px-6 md:px-12 lg:px-20"
     >
       <div className="max-w-[1280px] mx-auto">
         {/* Heading */}

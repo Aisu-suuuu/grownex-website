@@ -22,8 +22,12 @@ export default function Home() {
       <Showcase />
       <ClientExpect />
       <FAQ />
-      <GetInTouch />
-      <Footer />
+      <div className="sticky top-0 z-0">
+        <GetInTouch />
+      </div>
+      <div className="relative z-10">
+        <Footer />
+      </div>
     </>
   );
 }
