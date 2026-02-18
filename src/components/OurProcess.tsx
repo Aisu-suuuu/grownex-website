@@ -13,10 +13,10 @@ export default function OurProcess() {
     offset: ["start end", "end start"],
   });
 
-  const headerY = useTransform(scrollYProgress, [0, 0.5], [40, -10]);
+  const headerY = useTransform(scrollYProgress, [0, 0.5], [12, -4]);
 
   return (
-    <section ref={ref} className="py-14 md:py-20">
+    <section id="process" ref={ref} className="py-10 md:py-14">
       <div className="max-w-[1280px] mx-auto px-8 lg:px-16">
         {/* Section Heading */}
         <motion.div style={{ y: headerY }}>
@@ -32,7 +32,7 @@ export default function OurProcess() {
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.12 }}
-            className="text-center text-gray-500 text-[14px] md:text-[15px] max-w-[460px] mx-auto mb-8 md:mb-10 leading-[1.7]"
+            className="text-center text-gray-500 text-[14px] md:text-[15px] max-w-[460px] mx-auto mb-6 md:mb-8 leading-[1.7]"
           >
             Four phases, zero guesswork. Every step is designed to move your
             brand from insight to measurable market impact.

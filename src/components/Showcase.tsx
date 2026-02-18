@@ -12,11 +12,11 @@ export default function Showcase() {
     offset: ["start end", "end start"],
   });
 
-  const imgY = useTransform(scrollYProgress, [0, 1], [40, -40]);
-  const headerY = useTransform(scrollYProgress, [0, 0.5], [30, -10]);
+  const imgY = useTransform(scrollYProgress, [0, 1], [12, -12]);
+  const headerY = useTransform(scrollYProgress, [0, 0.5], [10, -4]);
 
   return (
-    <section ref={ref} className="py-14 md:py-20">
+    <section id="showcase" ref={ref} className="py-10 md:py-14">
       <div className="max-w-[1280px] mx-auto px-8 lg:px-16">
         <motion.div style={{ y: headerY }}>
           <motion.h2
@@ -31,7 +31,7 @@ export default function Showcase() {
             initial={{ opacity: 0, y: 16 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.12 }}
-            className="text-center text-gray-500 text-[14px] md:text-[15px] max-w-[540px] mx-auto mb-7 md:mb-9 leading-[1.7]"
+            className="text-center text-gray-500 text-[14px] md:text-[15px] max-w-[540px] mx-auto mb-5 md:mb-7 leading-[1.7]"
           >
             Performance-driven campaigns that connect your brand with the right
             audience, at the right moment — across every channel that matters.
@@ -44,7 +44,7 @@ export default function Showcase() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="relative w-full aspect-[16/9] overflow-hidden rounded-2xl"
         >
-          <motion.div style={{ y: imgY }} className="absolute inset-[-40px]">
+          <motion.div style={{ y: imgY }} className="absolute inset-[-12px]">
             <Image
               src="/images/projects/sowjanya/04.jpg"
               alt="Outdoor billboard showcase — Sowjanya Studios"

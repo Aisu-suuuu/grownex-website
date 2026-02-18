@@ -11,9 +11,9 @@ export default function HeroSection() {
     offset: ["start start", "end start"],
   });
 
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 120]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-  const marqueeY = useTransform(scrollYProgress, [0, 1], [0, 60]);
+  const heroY = useTransform(scrollYProgress, [0, 1], [0, 40]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const marqueeY = useTransform(scrollYProgress, [0, 1], [0, 20]);
 
   const stripImages = [
     { src: "/images/projects/sowjanya/01.jpg", alt: "Sowjanya Studios" },
@@ -31,7 +31,7 @@ export default function HeroSection() {
       {/* Hero Content */}
       <motion.div
         style={{ y: heroY, opacity: heroOpacity }}
-        className="max-w-[1280px] mx-auto px-8 lg:px-16 pt-12 md:pt-16 lg:pt-20 pb-10 md:pb-14"
+        className="max-w-[1280px] mx-auto px-8 lg:px-16 pt-10 md:pt-12 lg:pt-16 pb-8 md:pb-10"
       >
         <motion.p
           initial={{ opacity: 0, y: 12 }}
@@ -69,7 +69,7 @@ export default function HeroSection() {
           className="mt-9 flex flex-wrap gap-4"
         >
           <a
-            href="#contact"
+            href="/contact"
             className="inline-flex items-center px-7 py-3 border border-foreground text-foreground text-[14px] font-medium rounded-full hover:bg-foreground hover:text-white transition-all duration-300"
           >
             Start a conversation

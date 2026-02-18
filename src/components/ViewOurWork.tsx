@@ -14,10 +14,10 @@ export default function ViewOurWork() {
     offset: ["start end", "end start"],
   });
 
-  const headerY = useTransform(scrollYProgress, [0, 0.5], [40, -20]);
+  const headerY = useTransform(scrollYProgress, [0, 0.5], [12, -6]);
 
   return (
-    <section id="work" ref={ref} className="pb-14 md:pb-20">
+    <section id="work" ref={ref} className="pb-10 md:pb-14">
       <div className="max-w-[1280px] mx-auto px-8 lg:px-16">
         {/* Section Heading */}
         <motion.div style={{ y: headerY }}>
@@ -33,7 +33,7 @@ export default function ViewOurWork() {
             initial={{ opacity: 0, y: 12 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-center text-gray-500 text-[14px] md:text-[15px] max-w-[480px] mx-auto mb-8 md:mb-10 leading-[1.7]"
+            className="text-center text-gray-500 text-[14px] md:text-[15px] max-w-[480px] mx-auto mb-6 md:mb-8 leading-[1.7]"
           >
             A selection of projects where strategy met craft — identities built
             to perform, not just to look pretty.
@@ -82,7 +82,7 @@ function ProjectCard({
     offset: ["start end", "end start"],
   });
 
-  const imgY = useTransform(scrollYProgress, [0, 1], [20, -20]);
+  const imgY = useTransform(scrollYProgress, [0, 1], [8, -8]);
 
   return (
     <motion.div
@@ -94,7 +94,7 @@ function ProjectCard({
       <Link href={`/work/${project.slug}`} className="group block">
         <div className="relative aspect-[6/5] overflow-hidden rounded-2xl bg-gray-900">
           {/* Background Image with parallax */}
-          <motion.div style={{ y: imgY }} className="absolute inset-[-20px]">
+          <motion.div style={{ y: imgY }} className="absolute inset-[-8px]">
             <Image
               src={project.thumbnail}
               alt={project.title}

@@ -10,8 +10,9 @@ export default function GetInTouch() {
 
   return (
     <section
+      id="get-in-touch"
       ref={ref}
-      className="bg-accent text-white min-h-screen flex items-center py-20 md:py-28 px-6 md:px-12 lg:px-20"
+      className="bg-accent text-white min-h-screen flex items-center py-14 md:py-20 px-6 md:px-12 lg:px-20"
     >
       <div className="max-w-[1280px] mx-auto">
         {/* Heading */}
@@ -19,7 +20,7 @@ export default function GetInTouch() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-[48px] md:text-[72px] lg:text-[96px] font-bold leading-[1.05] mb-16 md:mb-20"
+          className="text-[48px] md:text-[72px] lg:text-[96px] font-bold leading-[1.05] mb-10 md:mb-14"
         >
           Get in <span className="italic font-normal">/touch/</span>.
         </motion.h2>

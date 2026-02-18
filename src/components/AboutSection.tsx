@@ -9,31 +9,31 @@ const capabilities = [
     title: "Brand Strategy & Identity",
     description:
       "Comprehensive brand development from strategic foundation through visual and verbal identity systems. We define positioning, articulate differentiation, establish messaging architecture, and create identity systems built for consistency and scale across all market touchpoints.",
-    image: "/images/projects/sowjanya/01.jpg",
+    image: "/images/capabilities/strategy.jpg",
   },
   {
     title: "Market Positioning & Messaging",
     description:
       "Strategic frameworks that clarify what you stand for, who you serve, and why you win. We develop positioning platforms, messaging hierarchies, value propositions, and narrative structures that drive alignment internally and resonance externally.",
-    image: "/images/projects/c2a/01.jpg",
+    image: "/images/capabilities/discovery.jpg",
   },
   {
     title: "Go-to-Market Strategy",
     description:
       "Full-spectrum GTM planning and execution spanning market assessment, audience definition, channel strategy, campaign architecture, and launch orchestration. We build programs designed to generate awareness, drive consideration, and accelerate pipeline.",
-    image: "/images/projects/mastersabroad/01.jpg",
+    image: "/images/capabilities/development.jpg",
   },
   {
     title: "Integrated Marketing & Growth",
     description:
       "End-to-end marketing systems combining brand-building with performance marketing. Our work includes acquisition strategy, demand generation, content ecosystems, digital campaigns, marketing automation, and full-funnel optimization.",
-    image: "/images/projects/mayu-infra/01.jpg",
+    image: "/images/capabilities/design.jpg",
   },
   {
     title: "Marketing Infrastructure",
     description:
       "Scalable systems and processes that enable consistent execution: marketing ops, technology selection and implementation, analytics frameworks, team structure design, and process optimization.",
-    image: "/images/projects/sowjanya/03.jpg",
+    image: "/images/capabilities/infrastructure.jpg",
   },
 ];
 
@@ -49,7 +49,7 @@ export default function AboutSection() {
     offset: ["start end", "end start"],
   });
 
-  const imgY = useTransform(scrollYProgress, [0, 1], [30, -30]);
+  const imgY = useTransform(scrollYProgress, [0, 1], [10, -10]);
 
   const goTo = useCallback(
     (dir: number) => {
@@ -68,11 +68,11 @@ export default function AboutSection() {
   );
 
   return (
-    <section id="about" ref={ref} className="py-14 md:py-24">
+    <section id="about" ref={ref} className="py-10 md:py-16">
       <div className="max-w-[1280px] mx-auto px-8 lg:px-16">
 
         {/* ===== Hero: About Us heading + Team Image ===== */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center mb-20 md:mb-28">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center mb-12 md:mb-16">
           {/* Left — Text */}
           <div>
             <motion.div
@@ -145,10 +145,10 @@ export default function AboutSection() {
         {/* ===== Our Capabilities — Dark Carousel ===== */}
       </div>
 
-      <div ref={capRef} className="bg-[#111] text-white py-16 md:py-24 mb-20 md:mb-28">
+      <div ref={capRef} className="py-10 md:py-14 mb-12 md:mb-16">
         <div className="max-w-[1280px] mx-auto px-8 lg:px-16">
           {/* Header row */}
-          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-14 md:mb-20">
+          <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-6 mb-10 md:mb-14">
             {/* Left label */}
             <motion.div
               initial={{ opacity: 0, x: -16 }}
@@ -159,7 +159,7 @@ export default function AboutSection() {
               <div className="w-[3px] h-8 bg-accent rounded-full" />
               <div>
                 <span className="text-accent text-[13px] font-medium block">Our</span>
-                <span className="text-white text-[13px] font-medium">Capabilities</span>
+                <span className="text-foreground text-[13px] font-medium">Capabilities</span>
               </div>
             </motion.div>
 
@@ -168,7 +168,7 @@ export default function AboutSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={capInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-[40px] md:text-[56px] lg:text-[72px] font-bold tracking-[-0.03em] leading-[1] md:flex-1 md:text-center"
+              className="text-[40px] md:text-[56px] lg:text-[72px] font-bold tracking-[-0.03em] leading-[1] md:flex-1 md:text-center text-foreground"
             >
               Capabilities<span className="text-accent">.</span>
             </motion.h3>
@@ -178,16 +178,16 @@ export default function AboutSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={capInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="text-[13px] md:text-[14px] text-gray-400 leading-[1.7] md:w-[280px] flex-shrink-0 md:text-right"
+              className="text-[13px] md:text-[14px] text-gray-500 leading-[1.7] md:w-[280px] flex-shrink-0 md:text-right"
             >
               See how our full-spectrum capabilities transform your brand with custom solutions that deliver measurable impact from day one.
             </motion.p>
           </div>
 
           {/* Carousel */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center min-h-[400px] md:min-h-[480px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center min-h-[340px] md:min-h-[400px]">
             {/* Left — Image */}
-            <div className="relative aspect-[4/3] md:aspect-[4/5] overflow-hidden rounded-xl">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-xl max-h-[360px]">
               <AnimatePresence mode="wait" custom={direction}>
                 <motion.div
                   key={activeSlide}
@@ -210,7 +210,7 @@ export default function AboutSection() {
             </div>
 
             {/* Right — Content */}
-            <div className="flex flex-col justify-between min-h-[320px] md:min-h-[400px]">
+            <div className="flex flex-col justify-between min-h-[280px] md:min-h-[340px]">
               <AnimatePresence mode="wait" custom={direction}>
                 <motion.div
                   key={activeSlide}
@@ -227,52 +227,37 @@ export default function AboutSection() {
                   </div>
 
                   {/* Title */}
-                  <h4 className="text-[28px] md:text-[36px] lg:text-[44px] font-bold tracking-[-0.02em] leading-[1.1] mb-5">
+                  <h4 className="text-[28px] md:text-[36px] lg:text-[44px] font-bold tracking-[-0.02em] leading-[1.1] mb-5 text-foreground">
                     {capabilities[activeSlide].title}
                   </h4>
 
                   {/* Description */}
-                  <p className="text-[14px] md:text-[16px] text-gray-400 leading-[1.8] max-w-[480px]">
+                  <p className="text-[14px] md:text-[16px] text-gray-500 leading-[1.8] max-w-[480px]">
                     {capabilities[activeSlide].description}
                   </p>
                 </motion.div>
               </AnimatePresence>
 
-              {/* Bottom: Rating + Nav */}
+              {/* Bottom: Nav */}
               <div className="mt-8 md:mt-10">
-                <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6">
-                  {/* Rating */}
-                  <div>
-                    <div className="flex items-center gap-1.5 mb-1">
-                      {[...Array(5)].map((_, i) => (
-                        <svg key={i} width="16" height="16" viewBox="0 0 16 16" fill="#F15A24">
-                          <path d="M8 0l2.35 4.76 5.25.76-3.8 3.7.9 5.24L8 12.18l-4.7 2.28.9-5.24-3.8-3.7 5.25-.76z" />
-                        </svg>
-                      ))}
-                      <span className="text-[13px] text-white ml-2 font-medium">4.9/5</span>
-                    </div>
-                    <p className="text-[13px] text-gray-500">
-                      Trusted by <span className="text-white font-medium">brands worldwide.</span>
-                    </p>
-                  </div>
-
+                <div className="border-t border-foreground/10 pt-6 flex justify-end">
                   {/* Navigation arrows */}
                   <div className="flex items-center gap-3">
                     <button
                       onClick={() => goTo(-1)}
-                      className="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center hover:border-white/50 hover:bg-white/5 transition-all duration-200"
+                      className="w-11 h-11 rounded-full border border-foreground/20 flex items-center justify-center hover:border-foreground/50 hover:bg-foreground/5 transition-all duration-200"
                       aria-label="Previous capability"
                     >
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M11 4L6 9l5 5" />
                       </svg>
                     </button>
                     <button
                       onClick={() => goTo(1)}
-                      className="w-11 h-11 rounded-full border border-white/20 flex items-center justify-center hover:border-white/50 hover:bg-white/5 transition-all duration-200"
+                      className="w-11 h-11 rounded-full border border-foreground/20 flex items-center justify-center hover:border-foreground/50 hover:bg-foreground/5 transition-all duration-200"
                       aria-label="Next capability"
                     >
-                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                         <path d="M7 4l5 5-5 5" />
                       </svg>
                     </button>
@@ -289,7 +274,7 @@ export default function AboutSection() {
                           className={`h-1 rounded-full transition-all duration-300 ${
                             i === activeSlide
                               ? "w-6 bg-accent"
-                              : "w-1.5 bg-white/20 hover:bg-white/40"
+                              : "w-1.5 bg-foreground/20 hover:bg-foreground/40"
                           }`}
                           aria-label={`Go to slide ${i + 1}`}
                         />
@@ -306,7 +291,7 @@ export default function AboutSection() {
       <div className="max-w-[1280px] mx-auto px-8 lg:px-16">
 
         {/* ===== Mission & Vision ===== */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16">
           {/* Mission */}
           <motion.div
             initial={{ opacity: 0, y: 24 }}

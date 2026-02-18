@@ -12,17 +12,17 @@ export default function WhatWeDo() {
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], [30, -20]);
+  const y = useTransform(scrollYProgress, [0, 1], [10, -8]);
 
   return (
-    <section ref={ref} className="py-14 md:py-20">
+    <section id="what-we-do" ref={ref} className="py-10 md:py-14">
       <motion.div style={{ y }} className="max-w-[1280px] mx-auto px-8 lg:px-16">
         {/* Section Label */}
         <motion.div
           initial={{ opacity: 0, x: -16 }}
           animate={isInView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.45 }}
-          className="flex items-center gap-3 mb-10 md:mb-12"
+          className="flex items-center gap-3 mb-6 md:mb-8"
         >
           <div className="w-[3px] h-5 bg-accent rounded-full" />
           <span className="text-accent text-[13px] font-medium tracking-wide">
@@ -60,7 +60,7 @@ export default function WhatWeDo() {
           initial={{ opacity: 0, y: 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5, delay: 0.3 }}
-          className="flex flex-wrap justify-center gap-3 mt-12"
+          className="flex flex-wrap justify-center gap-3 mt-8"
         >
           {serviceTags.map((tag, index) => (
             <motion.span

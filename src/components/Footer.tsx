@@ -48,7 +48,7 @@ export default function Footer() {
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5 }}
-            className="pt-16 md:pt-18 pb-10 md:pb-14 flex flex-col md:flex-row justify-between gap-10"
+            className="pt-12 md:pt-14 pb-8 md:pb-10 flex flex-col md:flex-row justify-between gap-8"
           >
             {/* Left — Brand Logo + Tagline */}
             <div className="flex-1">

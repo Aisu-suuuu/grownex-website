@@ -57,13 +57,13 @@ export default function FAQ() {
   };
 
   return (
-    <section ref={ref} className="py-14 md:py-20">
+    <section id="faq" ref={ref} className="py-10 md:py-14">
       <div className="max-w-[1280px] mx-auto px-8 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.5 }}
-          className="flex flex-col md:flex-row gap-10 md:gap-16"
+          className="flex flex-col md:flex-row gap-8 md:gap-12"
         >
           {/* Left — Sticky heading */}
           <div className="md:w-[380px] flex-shrink-0">

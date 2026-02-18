@@ -14,7 +14,7 @@ export default function ClientExpect() {
   const y = useTransform(scrollYProgress, [0, 0.6], [20, -8]);
 
   return (
-    <section ref={ref} className="pb-14 md:pb-20">
+    <section id="client-expect" ref={ref} className="pb-14 md:pb-20">
       <motion.div
         style={{ y }}
         className="max-w-[1280px] mx-auto px-8 lg:px-16 text-center"

@@ -49,8 +49,8 @@ export default function CaseStudyPage({ project }: { project: Project }) {
     target: heroRef,
     offset: ["start start", "end start"],
   });
-  const heroImgScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
+  const heroImgScale = useTransform(scrollYProgress, [0, 1], [1, 1.05]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -72,7 +72,7 @@ export default function CaseStudyPage({ project }: { project: Project }) {
       </nav>
 
       {/* ============ HERO — Immersive gradient + image ============ */}
-      <div ref={heroRef} className="relative min-h-[85vh] overflow-hidden">
+      <div id="cs-hero" ref={heroRef} className="relative min-h-[75vh] overflow-hidden">
         {/* Gradient background */}
         <div
           className="absolute inset-0"
@@ -94,7 +94,7 @@ export default function CaseStudyPage({ project }: { project: Project }) {
 
         <motion.div
           style={{ opacity: heroOpacity }}
-          className="relative z-10 flex flex-col justify-end min-h-[85vh] max-w-7xl mx-auto px-6 lg:px-12 pb-16 md:pb-20"
+          className="relative z-10 flex flex-col justify-end min-h-[75vh] max-w-7xl mx-auto px-6 lg:px-12 pb-12 md:pb-16"
         >
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -127,7 +127,7 @@ export default function CaseStudyPage({ project }: { project: Project }) {
       </div>
 
       {/* ============ PROJECT OVERVIEW — Two columns ============ */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-12 py-20 md:py-28">
+      <section id="cs-overview" className="max-w-7xl mx-auto px-6 lg:px-12 py-14 md:py-20">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
           <motion.div
             className="md:col-span-4"
@@ -172,12 +172,13 @@ export default function CaseStudyPage({ project }: { project: Project }) {
 
       {/* ============ FEATURED IMAGE — Full-bleed laptop mockup ============ */}
       <motion.section
+        id="cs-featured"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-80px" }}
         custom={0}
         variants={fadeUp}
-        className="max-w-[1440px] mx-auto px-4 md:px-8 mb-20 md:mb-28"
+        className="max-w-[1440px] mx-auto px-4 md:px-8 mb-14 md:mb-20"
       >
         <div className="relative bg-gray-950 rounded-2xl md:rounded-3xl p-6 md:p-12 overflow-hidden">
           {/* Subtle gradient glow */}
@@ -214,7 +215,7 @@ export default function CaseStudyPage({ project }: { project: Project }) {
       </motion.section>
 
       {/* ============ ABOUT THE BRAND — Text section ============ */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-12 mb-20 md:mb-28">
+      <section id="cs-about-brand" className="max-w-7xl mx-auto px-6 lg:px-12 mb-14 md:mb-20">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -237,7 +238,7 @@ export default function CaseStudyPage({ project }: { project: Project }) {
       </section>
 
       {/* ============ BRAND IDENTITY — Colors, Typography, Logo ============ */}
-      <section className="bg-gray-50 py-20 md:py-28 mb-20 md:mb-28">
+      <section id="cs-brand-identity" className="bg-gray-50 py-14 md:py-20 mb-14 md:mb-20">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <motion.h2
             initial="hidden"
@@ -364,7 +365,7 @@ export default function CaseStudyPage({ project }: { project: Project }) {
       </section>
 
       {/* ============ CHALLENGE & SOLUTION ============ */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-12 mb-20 md:mb-28">
+      <section id="cs-challenge" className="max-w-7xl mx-auto px-6 lg:px-12 mb-14 md:mb-20">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20">
           <motion.div
             initial="hidden"
@@ -398,7 +399,7 @@ export default function CaseStudyPage({ project }: { project: Project }) {
       </section>
 
       {/* ============ RESULTS / IMPACT ============ */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-12 mb-20 md:mb-28">
+      <section id="cs-results" className="max-w-7xl mx-auto px-6 lg:px-12 mb-14 md:mb-20">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -431,7 +432,7 @@ export default function CaseStudyPage({ project }: { project: Project }) {
       </section>
 
       {/* ============ CREATIVE GALLERY — Mixed layouts ============ */}
-      <section className="max-w-[1440px] mx-auto px-4 md:px-8 mb-20 md:mb-28">
+      <section id="cs-gallery" className="max-w-[1440px] mx-auto px-4 md:px-8 mb-14 md:mb-20">
         <motion.h2
           initial="hidden"
           whileInView="visible"
@@ -591,9 +592,9 @@ export default function CaseStudyPage({ project }: { project: Project }) {
       </section>
 
       {/* ============ DETAILS THAT STAND OUT — Closing section ============ */}
-      <section className="mb-20 md:mb-28">
+      <section className="mb-14 md:mb-20">
         <div
-          className="relative py-20 md:py-32 overflow-hidden"
+          className="relative py-14 md:py-20 overflow-hidden"
           style={{ background: project.heroGradient }}
         >
           <div className="absolute inset-0 bg-black/20" />
@@ -621,7 +622,7 @@ export default function CaseStudyPage({ project }: { project: Project }) {
       </section>
 
       {/* ============ BACK CTA ============ */}
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 pb-20 text-center">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 pb-14 text-center">
         <motion.div
           initial="hidden"
           whileInView="visible"
