@@ -91,50 +91,54 @@ export default function InsightsPageContent() {
           </motion.div>
         )}
 
-        {/* Divider */}
-        <div className="h-px bg-gray-200 mb-10 md:mb-14" />
-
-        {/* All Posts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {insights.map((post, index) => (
-            <motion.div
-              key={post.slug}
-              initial={{ opacity: 0, y: 24 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
-            >
-              <Link
-                href={`/insights/${post.slug}`}
-                className="group block"
-              >
-                <div className="relative aspect-[16/9] overflow-hidden rounded-xl mb-4">
-                  <Image
-                    src={post.image}
-                    alt={post.title}
-                    fill
-                    className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                  />
-                </div>
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="px-2.5 py-1 bg-accent/10 text-accent text-[11px] font-medium rounded-full">
-                    {post.category}
-                  </span>
-                  <span className="text-[12px] text-gray-400">{post.date}</span>
-                  <span className="text-[12px] text-gray-400">
-                    {post.readTime}
-                  </span>
-                </div>
-                <h3 className="text-[18px] md:text-[20px] font-bold leading-[1.25] mb-2 group-hover:text-accent transition-colors duration-300">
-                  {post.title}
-                </h3>
-                <p className="text-[13px] md:text-[14px] text-gray-500 leading-[1.7] line-clamp-2">
-                  {post.excerpt}
-                </p>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+        {/* All Posts Grid — only show if more than 1 insight */}
+        {insights.length > 1 && (
+          <>
+            <div className="h-px bg-gray-200 mb-10 md:mb-14" />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              {insights.slice(1).map((post, index) => (
+                <motion.div
+                  key={post.slug}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={isInView ? { opacity: 1, y: 0 } : {}}
+                  transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
+                >
+                  <Link
+                    href={`/insights/${post.slug}`}
+                    className="group block"
+                  >
+                    <div className="relative aspect-[16/9] overflow-hidden rounded-xl mb-4">
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover group-hover:scale-[1.03] transition-transform duration-700"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                      />
+                    </div>
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="px-2.5 py-1 bg-accent/10 text-accent text-[11px] font-medium rounded-full">
+                        {post.category}
+                      </span>
+                      <span className="text-[12px] text-gray-400">
+                        {post.date}
+                      </span>
+                      <span className="text-[12px] text-gray-400">
+                        {post.readTime}
+                      </span>
+                    </div>
+                    <h3 className="text-[18px] md:text-[20px] font-bold leading-[1.25] mb-2 group-hover:text-accent transition-colors duration-300">
+                      {post.title}
+                    </h3>
+                    <p className="text-[13px] md:text-[14px] text-gray-500 leading-[1.7] line-clamp-2">
+                      {post.excerpt}
+                    </p>
+                  </Link>
+                </motion.div>
+              ))}
+            </div>
+          </>
+        )}
       </div>
     </section>
   );
