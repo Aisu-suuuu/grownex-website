@@ -136,10 +136,16 @@ export default function InsightArticle({ post }: { post: InsightPost }) {
 /* ─── Sectioned Article with Side Nav + Content Panel ─── */
 
 function SectionedArticle({ post }: { post: InsightPost }) {
-  const sections = post.sections!;
-  const [activeId, setActiveId] = useState(sections[0].id);
+  const allSections = post.sections!;
 
-  const activeSection = sections.find((s) => s.id === activeId) ?? sections[0];
+  // First 3 sections shown as flowing content
+  const introSections = allSections.slice(0, 3);
+  // Remaining sections in the side nav + content panel
+  const navSections = allSections.slice(3);
+
+  const [activeId, setActiveId] = useState(navSections[0].id);
+  const activeSection =
+    navSections.find((s) => s.id === activeId) ?? navSections[0];
 
   return (
     <article className="py-10 md:py-14">
@@ -205,7 +211,40 @@ function SectionedArticle({ post }: { post: InsightPost }) {
         </motion.div>
       </div>
 
-      {/* Two-column: Side Nav + Content Panel */}
+      {/* Intro Sections — flowing content */}
+      <div className="max-w-[800px] mx-auto px-8 lg:px-16">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
+          className="space-y-10 mb-14"
+        >
+          {introSections.map((section) => (
+            <div key={section.id}>
+              <h2 className="text-[22px] md:text-[26px] font-bold tracking-[-0.02em] mb-4 text-foreground">
+                {section.title}
+              </h2>
+              <div className="space-y-4">
+                {section.content.map((block, i) => (
+                  <p
+                    key={i}
+                    className="text-[14px] md:text-[15px] text-gray-600 leading-[1.85]"
+                  >
+                    {block}
+                  </p>
+                ))}
+              </div>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+
+      {/* Divider */}
+      <div className="max-w-[1280px] mx-auto px-8 lg:px-16">
+        <div className="h-px bg-gray-200 mb-10 md:mb-14" />
+      </div>
+
+      {/* Two-column: Side Nav + Content Panel (Phase 1 onwards) */}
       <div className="max-w-[1280px] mx-auto px-8 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -217,10 +256,10 @@ function SectionedArticle({ post }: { post: InsightPost }) {
           <nav className="w-full lg:w-[280px] shrink-0">
             <div className="lg:sticky lg:top-[100px]">
               <p className="text-[11px] font-medium text-gray-400 uppercase tracking-wider mb-4">
-                Contents
+                Deep Dive
               </p>
               <ul className="space-y-0.5 max-h-[60vh] lg:max-h-none overflow-y-auto lg:overflow-visible">
-                {sections.map((section, index) => (
+                {navSections.map((section, index) => (
                   <li key={section.id}>
                     <button
                       onClick={() => setActiveId(section.id)}
@@ -282,31 +321,38 @@ function SectionedArticle({ post }: { post: InsightPost }) {
 
                 {/* Prev / Next navigation */}
                 <div className="flex items-center justify-between mt-12 pt-6 border-t border-gray-200">
-                  {sections.indexOf(activeSection) > 0 ? (
+                  {navSections.indexOf(activeSection) > 0 ? (
                     <button
                       onClick={() =>
                         setActiveId(
-                          sections[sections.indexOf(activeSection) - 1].id
+                          navSections[navSections.indexOf(activeSection) - 1].id
                         )
                       }
                       className="text-[13px] text-gray-500 hover:text-accent transition-colors"
                     >
                       &larr;{" "}
-                      {sections[sections.indexOf(activeSection) - 1].title}
+                      {
+                        navSections[navSections.indexOf(activeSection) - 1]
+                          .title
+                      }
                     </button>
                   ) : (
                     <span />
                   )}
-                  {sections.indexOf(activeSection) < sections.length - 1 ? (
+                  {navSections.indexOf(activeSection) <
+                  navSections.length - 1 ? (
                     <button
                       onClick={() =>
                         setActiveId(
-                          sections[sections.indexOf(activeSection) + 1].id
+                          navSections[navSections.indexOf(activeSection) + 1].id
                         )
                       }
                       className="text-[13px] text-accent font-medium hover:underline transition-colors"
                     >
-                      {sections[sections.indexOf(activeSection) + 1].title}{" "}
+                      {
+                        navSections[navSections.indexOf(activeSection) + 1]
+                          .title
+                      }{" "}
                       &rarr;
                     </button>
                   ) : (
