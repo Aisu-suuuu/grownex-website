@@ -3,6 +3,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { dmCaseStudies } from "@/lib/data";
 
 const dmServices = [
   {
@@ -147,6 +149,84 @@ export default function DigitalMarketingContent() {
                 <p className="text-[13px] md:text-[14px] text-gray-500 group-hover:text-gray-400 leading-[1.7] transition-colors duration-500">
                   {service.description}
                 </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Case Studies Section */}
+        <div className="mt-14 md:mt-20">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-[24px] md:text-[32px] font-bold tracking-[-0.02em] mb-3"
+          >
+            Case Studies
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="text-gray-500 text-[14px] md:text-[15px] max-w-[520px] leading-[1.7] mb-8 md:mb-10"
+          >
+            Real campaigns. Real results. See how we&apos;ve delivered measurable
+            growth for our clients.
+          </motion.p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+            {dmCaseStudies.map((cs, index) => (
+              <motion.div
+                key={cs.slug}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 + index * 0.1 }}
+              >
+                <Link
+                  href={`/digital-marketing/${cs.slug}`}
+                  className="group block bg-gray-50 rounded-2xl overflow-hidden hover:shadow-lg transition-all duration-500"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden">
+                    <Image
+                      src={cs.thumbnail}
+                      alt={cs.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <span className="px-2.5 py-1 bg-accent/90 text-white text-[10px] font-medium tracking-wider uppercase rounded-full">
+                        {cs.tag}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-5 md:p-6">
+                    <h3 className="text-[16px] md:text-[18px] font-bold text-foreground mb-2 group-hover:text-accent transition-colors duration-300">
+                      {cs.title}
+                    </h3>
+                    <p className="text-[13px] text-gray-500 leading-[1.6] line-clamp-2 mb-4">
+                      {cs.description}
+                    </p>
+                    <div className="flex items-center gap-4">
+                      {cs.results.slice(0, 2).map((r) => (
+                        <span
+                          key={r.metric}
+                          className="text-[12px] text-gray-400"
+                        >
+                          <span className="font-bold text-foreground">
+                            {r.value}
+                            {r.suffix}
+                          </span>{" "}
+                          {r.metric}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </Link>
               </motion.div>
             ))}
           </div>

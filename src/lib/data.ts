@@ -277,3 +277,223 @@ export const serviceTags = [
   "Integrated marketing",
   "Content Ecosystems",
 ];
+
+export interface DMCaseStudyResult {
+  metric: string;
+  value: string;
+  previousValue?: string;
+  suffix?: string;
+  description: string;
+}
+
+export interface DMCaseStudy {
+  slug: string;
+  title: string;
+  client: string;
+  location: string;
+  duration: string;
+  year: string;
+  category: string;
+  tag: string;
+  thumbnail: string;
+  images: string[];
+  description: string;
+  challenge: string;
+  strategyOverview: string;
+  strategies: {
+    title: string;
+    items: string[];
+  }[];
+  contentStrategy?: {
+    title: string;
+    description: string;
+    types: { name: string; description: string }[];
+  };
+  additionalTactics?: string[];
+  results: DMCaseStudyResult[];
+  topPerformers?: string;
+  contentHighlight?: string;
+  heroGradient: string;
+}
+
+export const dmCaseStudies: DMCaseStudy[] = [
+  {
+    slug: "aruh-koncepts",
+    title: "Precision Lead Generation for Aruh Koncepts",
+    client: "Aruh Koncepts",
+    location: "Hyderabad",
+    duration: "6 months",
+    year: "2025",
+    category: "Lead Generation, Meta Ads, SMM",
+    tag: "Digital Marketing",
+    thumbnail: "/images/projects/aruh-koncepts/01.jpg",
+    images: [
+      "/images/projects/aruh-koncepts/01.jpg",
+      "/images/projects/aruh-koncepts/02.jpg",
+      "/images/projects/aruh-koncepts/03.jpg",
+    ],
+    description:
+      "A precision-targeted Meta advertising and social media marketing campaign that transformed lead quality for a premium interior design studio — eliminating junk leads and driving 800% more qualified prospects.",
+    challenge:
+      "Aruh Koncepts, a premium interior design studio in Hyderabad, faced a critical lead quality problem: 50-70 monthly leads but only 5% qualified as serious prospects. Sales resources were wasted filtering budget shoppers and information seekers.",
+    strategyOverview:
+      "Grownex implemented precision-targeted Meta advertising with Social Media Marketing and Google My Business optimization, eliminating junk leads through strategic targeting and content.",
+    strategies: [
+      {
+        title: "Meta Ads: ABO with Job Title Targeting",
+        items: [
+          "Senior Corporate Executives (CEOs, Directors, VPs)",
+          "Business Owners & Entrepreneurs",
+          "Medical Professionals",
+          "Tech & IT Leadership",
+          "Real Estate Leaders",
+        ],
+      },
+      {
+        title: "Exclusion Strategy",
+        items: [
+          "Aggressively filtered students, entry-level positions, budget-focused interests, and non-affluent areas",
+        ],
+      },
+      {
+        title: "Geographic Focus",
+        items: [
+          "Targeted only affluent Hyderabad neighborhoods — Jubilee Hills, Banjara Hills, Gachibowli",
+        ],
+      },
+      {
+        title: "Transparency as Filter",
+        items: [
+          'Communicated budget ranges openly ("₹15L–₹50L+") to self-select qualified prospects',
+        ],
+      },
+    ],
+    contentStrategy: {
+      title: "Content Strategy: UGC, FGC & EGC",
+      description: "Aligned with Meta's Andromeda algorithm",
+      types: [
+        {
+          name: "UGC",
+          description:
+            "Client testimonials, homeowner tours, authentic reveal reactions",
+        },
+        {
+          name: "FGC",
+          description:
+            "Founder presenting design philosophy, process, project stories",
+        },
+        {
+          name: "EGC",
+          description:
+            "Technical content, budget guidance, material education",
+        },
+      ],
+    },
+    additionalTactics: [
+      "Instagram-focused content (5–7 Reels weekly)",
+      "Portfolio showcases with high-quality imagery",
+      "Optimized GMB with reviews and local SEO",
+    ],
+    results: [
+      {
+        metric: "Qualified Leads/Month",
+        value: "27",
+        previousValue: "3",
+        description: "800% increase from baseline",
+      },
+      {
+        metric: "Qualification Rate",
+        value: "71",
+        suffix: "%",
+        previousValue: "5%",
+        description: "vs. 5% baseline",
+      },
+      {
+        metric: "Cost Per Qualified Lead",
+        value: "₹478",
+        description: "87% reduction in cost",
+      },
+      {
+        metric: "Junk Lead Elimination",
+        value: "84",
+        suffix: "%",
+        description: "Dramatic reduction in unqualified leads",
+      },
+    ],
+    topPerformers:
+      "Medical professionals (81% qualification), Senior executives (78% qualification, highest project values)",
+    contentHighlight:
+      "UGC achieved 8.7% engagement with lowest CPM, outperforming polished creative.",
+    heroGradient:
+      "linear-gradient(135deg, #1a1a1a 0%, #2c1810 50%, #B8860B 100%)",
+  },
+  {
+    slug: "case-study-2",
+    title: "Digital Growth Campaign — Case Study 2",
+    client: "Client Name",
+    location: "Location",
+    duration: "Duration",
+    year: "2025",
+    category: "Digital Marketing, Performance Ads",
+    tag: "Digital Marketing",
+    thumbnail: "/images/projects/aruh-koncepts/01.jpg",
+    images: [
+      "/images/projects/aruh-koncepts/01.jpg",
+      "/images/projects/aruh-koncepts/02.jpg",
+      "/images/projects/aruh-koncepts/03.jpg",
+    ],
+    description:
+      "A performance-driven digital marketing campaign delivering measurable business outcomes through strategic targeting and content optimization.",
+    challenge:
+      "The client faced challenges with lead quality and high acquisition costs in a competitive market. Existing campaigns were generating volume without converting to real business.",
+    strategyOverview:
+      "Grownex implemented a multi-channel digital strategy combining precision-targeted paid advertising with organic social media growth and local SEO optimization.",
+    strategies: [
+      {
+        title: "Paid Advertising Strategy",
+        items: [
+          "Precision audience targeting",
+          "A/B tested creative formats",
+          "Budget optimization for ROAS",
+          "Retargeting funnel setup",
+        ],
+      },
+      {
+        title: "Organic Growth",
+        items: [
+          "Content calendar execution",
+          "Community engagement",
+          "Local SEO optimization",
+        ],
+      },
+    ],
+    results: [
+      {
+        metric: "Lead Increase",
+        value: "300",
+        suffix: "%",
+        description: "Growth in qualified leads",
+      },
+      {
+        metric: "Cost Reduction",
+        value: "65",
+        suffix: "%",
+        description: "Lower cost per acquisition",
+      },
+      {
+        metric: "Engagement Rate",
+        value: "7.2",
+        suffix: "%",
+        description: "Across social channels",
+      },
+      {
+        metric: "ROI",
+        value: "4.5",
+        suffix: "x",
+        description: "Return on ad spend",
+      },
+    ],
+    heroGradient:
+      "linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #F15A24 100%)",
+  },
+];
