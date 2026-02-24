@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronRight } from "lucide-react";
 import type { InsightPost } from "@/lib/insights";
 
 export default function InsightArticle({ post }: { post: InsightPost }) {
@@ -134,16 +133,13 @@ export default function InsightArticle({ post }: { post: InsightPost }) {
   );
 }
 
-/* ─── Sectioned Article with Side Nav + Accordion ─── */
+/* ─── Sectioned Article with Side Nav + Content Panel ─── */
 
 function SectionedArticle({ post }: { post: InsightPost }) {
-  const [openSection, setOpenSection] = useState<string | null>(null);
-
   const sections = post.sections!;
+  const [activeId, setActiveId] = useState(sections[0].id);
 
-  const toggleSection = (id: string) => {
-    setOpenSection((prev) => (prev === id ? null : id));
-  };
+  const activeSection = sections.find((s) => s.id === activeId) ?? sections[0];
 
   return (
     <article className="py-10 md:py-14">
@@ -209,7 +205,7 @@ function SectionedArticle({ post }: { post: InsightPost }) {
         </motion.div>
       </div>
 
-      {/* Two-column: Side Nav + Accordion */}
+      {/* Two-column: Side Nav + Content Panel */}
       <div className="max-w-[1280px] mx-auto px-8 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -217,23 +213,26 @@ function SectionedArticle({ post }: { post: InsightPost }) {
           transition={{ duration: 0.5, delay: 0.4 }}
           className="flex flex-col lg:flex-row gap-8 lg:gap-12"
         >
-          {/* Side Nav — Desktop only */}
-          <nav className="hidden lg:block w-[280px] shrink-0">
-            <div className="sticky top-[100px]">
+          {/* Side Nav */}
+          <nav className="w-full lg:w-[280px] shrink-0">
+            <div className="lg:sticky lg:top-[100px]">
               <p className="text-[11px] font-medium text-gray-400 uppercase tracking-wider mb-4">
                 Contents
               </p>
-              <ul className="space-y-1">
-                {sections.map((section) => (
+              <ul className="space-y-0.5 max-h-[60vh] lg:max-h-none overflow-y-auto lg:overflow-visible">
+                {sections.map((section, index) => (
                   <li key={section.id}>
                     <button
-                      onClick={() => toggleSection(section.id)}
-                      className={`w-full text-left px-3 py-2.5 rounded-lg text-[13px] leading-[1.4] transition-all duration-200 ${
-                        openSection === section.id
+                      onClick={() => setActiveId(section.id)}
+                      className={`w-full text-left px-3 py-2.5 rounded-lg text-[13px] leading-[1.4] transition-all duration-200 flex items-center gap-3 ${
+                        activeId === section.id
                           ? "bg-accent/10 text-accent font-medium"
                           : "text-gray-500 hover:text-foreground hover:bg-gray-100"
                       }`}
                     >
+                      <span className="text-[11px] tabular-nums opacity-50 w-4 shrink-0">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
                       {section.title}
                     </button>
                   </li>
@@ -242,19 +241,80 @@ function SectionedArticle({ post }: { post: InsightPost }) {
             </div>
           </nav>
 
-          {/* Accordion */}
+          {/* Content Panel */}
           <div className="flex-1 min-w-0">
-            <div className="divide-y divide-gray-200">
-              {sections.map((section, index) => (
-                <AccordionItem
-                  key={section.id}
-                  section={section}
-                  isOpen={openSection === section.id}
-                  onToggle={() => toggleSection(section.id)}
-                  index={index}
-                />
-              ))}
-            </div>
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeSection.id}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -8 }}
+                transition={{ duration: 0.25 }}
+              >
+                {/* Section Title */}
+                <h2 className="text-[24px] md:text-[30px] font-bold tracking-[-0.02em] mb-6 text-foreground">
+                  {activeSection.title}
+                </h2>
+
+                {/* Section Content */}
+                <div className="space-y-5">
+                  {activeSection.content.map((block, i) => {
+                    if (block.startsWith("### ")) {
+                      return (
+                        <h3
+                          key={i}
+                          className="text-[16px] md:text-[17px] font-bold text-foreground mt-8 mb-1"
+                        >
+                          {block.replace("### ", "")}
+                        </h3>
+                      );
+                    }
+                    return (
+                      <p
+                        key={i}
+                        className="text-[14px] md:text-[15px] text-gray-600 leading-[1.85]"
+                      >
+                        {block}
+                      </p>
+                    );
+                  })}
+                </div>
+
+                {/* Prev / Next navigation */}
+                <div className="flex items-center justify-between mt-12 pt-6 border-t border-gray-200">
+                  {sections.indexOf(activeSection) > 0 ? (
+                    <button
+                      onClick={() =>
+                        setActiveId(
+                          sections[sections.indexOf(activeSection) - 1].id
+                        )
+                      }
+                      className="text-[13px] text-gray-500 hover:text-accent transition-colors"
+                    >
+                      &larr;{" "}
+                      {sections[sections.indexOf(activeSection) - 1].title}
+                    </button>
+                  ) : (
+                    <span />
+                  )}
+                  {sections.indexOf(activeSection) < sections.length - 1 ? (
+                    <button
+                      onClick={() =>
+                        setActiveId(
+                          sections[sections.indexOf(activeSection) + 1].id
+                        )
+                      }
+                      className="text-[13px] text-accent font-medium hover:underline transition-colors"
+                    >
+                      {sections[sections.indexOf(activeSection) + 1].title}{" "}
+                      &rarr;
+                    </button>
+                  ) : (
+                    <span />
+                  )}
+                </div>
+              </motion.div>
+            </AnimatePresence>
           </div>
         </motion.div>
       </div>
@@ -281,90 +341,5 @@ function SectionedArticle({ post }: { post: InsightPost }) {
         </div>
       </div>
     </article>
-  );
-}
-
-/* ─── Accordion Item ─── */
-
-function AccordionItem({
-  section,
-  isOpen,
-  onToggle,
-  index,
-}: {
-  section: { id: string; title: string; content: string[] };
-  isOpen: boolean;
-  onToggle: () => void;
-  index: number;
-}) {
-  return (
-    <div id={section.id}>
-      <button
-        onClick={onToggle}
-        className="w-full flex items-center justify-between py-5 md:py-6 text-left group"
-      >
-        <div className="flex items-center gap-4">
-          <span className="text-[12px] text-gray-300 font-medium tabular-nums w-6">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <h2
-            className={`text-[17px] md:text-[20px] font-semibold tracking-[-0.01em] transition-colors duration-200 ${
-              isOpen
-                ? "text-accent"
-                : "text-foreground group-hover:text-accent"
-            }`}
-          >
-            {section.title}
-          </h2>
-        </div>
-        <motion.div
-          animate={{ rotate: isOpen ? 90 : 0 }}
-          transition={{ duration: 0.2 }}
-          className="shrink-0 ml-4"
-        >
-          <ChevronRight
-            size={18}
-            className={`transition-colors duration-200 ${
-              isOpen ? "text-accent" : "text-gray-400"
-            }`}
-          />
-        </motion.div>
-      </button>
-
-      <AnimatePresence initial={false}>
-        {isOpen && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-            className="overflow-hidden"
-          >
-            <div className="pb-8 pl-10 pr-4 space-y-5">
-              {section.content.map((block, i) => {
-                if (block.startsWith("### ")) {
-                  return (
-                    <h3
-                      key={i}
-                      className="text-[15px] md:text-[16px] font-bold text-foreground mt-6 mb-1"
-                    >
-                      {block.replace("### ", "")}
-                    </h3>
-                  );
-                }
-                return (
-                  <p
-                    key={i}
-                    className="text-[14px] md:text-[15px] text-gray-600 leading-[1.85]"
-                  >
-                    {block}
-                  </p>
-                );
-              })}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
   );
 }
