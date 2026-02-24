@@ -2,7 +2,7 @@ import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import WhatWeDo from "@/components/WhatWeDo";
 import ViewOurWork from "@/components/ViewOurWork";
-import OurProcess from "@/components/OurProcess";
+import ViewOurDMWork from "@/components/ViewOurDMWork";
 import OurServices from "@/components/OurServices";
 import Showcase from "@/components/Showcase";
 import ClientExpect from "@/components/ClientExpect";
@@ -17,7 +17,7 @@ export default function Home() {
       <HeroSection />
       <WhatWeDo />
       <ViewOurWork />
-      <OurProcess />
+      <ViewOurDMWork />
       <OurServices />
       <Showcase />
       <ClientExpect />
