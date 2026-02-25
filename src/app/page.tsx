@@ -4,6 +4,7 @@ import WhatWeDo from "@/components/WhatWeDo";
 import ViewOurWork from "@/components/ViewOurWork";
 import ViewOurDMWork from "@/components/ViewOurDMWork";
 import OurServices from "@/components/OurServices";
+import CreativeWorks from "@/components/CreativeWorks";
 import Showcase from "@/components/Showcase";
 import ClientExpect from "@/components/ClientExpect";
 import FAQ from "@/components/FAQ";
@@ -18,6 +19,7 @@ export default function Home() {
       <WhatWeDo />
       <ViewOurWork />
       <ViewOurDMWork />
+      <CreativeWorks />
       <OurServices />
       <Showcase />
       <ClientExpect />

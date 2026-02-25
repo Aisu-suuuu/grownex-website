@@ -95,6 +95,13 @@
   animation-play-state: paused;
 }
 
+/* Responsive grid override for 4 columns */
+@media (min-width: 768px) {
+  .md\:\!grid-cols-4 {
+    grid-template-columns: repeat(4, 1fr) !important;
+  }
+}
+
 /* Apple Liquid Glass Nav */
 .liquid-glass {
   background: linear-gradient(

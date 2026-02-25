@@ -212,7 +212,7 @@ function SectionedArticle({ post }: { post: InsightPost }) {
       </div>
 
       {/* Intro Sections — flowing content */}
-      <div className="max-w-[800px] mx-auto px-8 lg:px-16">
+      <div className="max-w-[1280px] mx-auto px-8 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
